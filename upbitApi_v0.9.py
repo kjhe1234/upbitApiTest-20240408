@@ -1,12 +1,12 @@
 import sys
 import time
-
 import requests
 
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from PyQt5 import uic
 from PyQt5.QtGui import *
+
 import pyupbit  # pip install pyupbit
 
 
@@ -16,6 +16,7 @@ form_class = uic.loadUiType("ui/up_ver1.ui")[0]
 class UpbitCall(QThread):
     # 시그널 함수 선언(정의)
     coinDataSent = pyqtSignal(float, float, float, float, float, float, float, float)
+    # 객체수가 8개라 8번 사용 (실수라 float)
 
     def __init__(self, ticker):
     # 시그널 클래스 객체가 선언될때 메인윈도우에서 코인 종류를 받아오게 설계
