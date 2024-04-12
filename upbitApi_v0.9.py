@@ -42,6 +42,8 @@ class UpbitCall(QThread):
             acc_trade_price_24h = result[0]["acc_trade_price_24h"]  # 24시간 누적 거래대금
             signed_change_rate = result[0]["signed_change_rate"]  # 부호가 있는 변화율
 
+
+            # 서버에 있는 데이터를 불러와서 메인 윈도우에 보여주기
             self.coinDataSent.emit(
                 float(trade_price),
                 float(high_price),
@@ -87,7 +89,7 @@ class MainWindow(QMainWindow, form_class):  # 슬롯 클래스
 
         # KRW- 제거 텍스트 리스트로 생성
         for ticker in tickerList:
-            coinList.append(ticker[4:])
+            coinList.append(ticker[4:])  # KRW- 를 제거
 
         coinList.remove('BTC') # 리스트에 BTC 제거
         coinList = sorted(coinList)  # BTC를 제외한 나머지 코인리스트 오름차순으로 정렬
